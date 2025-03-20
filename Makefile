@@ -9,10 +9,10 @@ wordlengths: wordlengths.o histogram.o
 	$(CC) $(CFLAGS) -o wordlengths wordlengths.o histogram.o -lm
 
 histogram.o: histogram.c histogram.h
-	$(CC) $(CFLAGS) -c histogram.c
+	$(CC) $(CFLAGS) -c histogram.c 
 
 demo_histogram: demo_histogram.o histogram.o
-	$(CC) $(CFLAGS) -o demo_histogram demo_histogram.o histogram.o
+	$(CC) $(CFLAGS) -o demo_histogram demo_histogram.o histogram.o -lm
 
 demo_histogram.o: demo_histogram.c
 	$(CC) $(CFLAGS) -c demo_histogram.c
@@ -40,7 +40,7 @@ anaquery.o: anaquery.c make_anagram_list.h
 # Shuffle
 
 demo_shuffle: demo_shuffle.o shuffle.o
-	$(CC) $(CFLAGS) -o demo_shuffle demo_shuffle.o shuffle.o
+	$(CC) $(CFLAGS) -o demo_shuffle demo_shuffle.o shuffle.o -lm
 
 shuffle.o:  shuffle.c shuffle.h
 	$(CC) $(CFLAGS) -c shuffle.c
