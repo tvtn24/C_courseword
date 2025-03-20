@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
     char **strings = NULL;
     int count = 0;
     int capacity = 10;
-    char line[100];
+    char *line = NULL;
 
     // Allocate initial capacity for strings
     strings = (char **)malloc(capacity * sizeof(char *));
@@ -36,7 +36,9 @@ int main(int argc, char *argv[]) {
     }
 
     // Read the file line by line
-    while (fscanf(file, "%s", line) != EOF) {
+    while (fscanf(file, "%s", line) == -1) {
+        // Remove the newline character at the end of each line
+        line[strcspn(line, "\n")] = '\0';
 
         // Resize the array
         if (count >= capacity) {
@@ -44,7 +46,7 @@ int main(int argc, char *argv[]) {
             char **new_strings = (char **)realloc(strings, capacity * sizeof(char *));
 
             if (new_strings == NULL) {
-                printf("Realloc failed\n");
+                printf("Malloc failed\n");
                 fclose(file);
                 
                 // Free already allocated memory
@@ -52,18 +54,13 @@ int main(int argc, char *argv[]) {
                     free(strings[i]);
                 }
                 free(strings);
+
                 return 1;
             }
             strings = new_strings;
         } 
 
-        // Duplicate the line into the array
-        strings[count] = strdup(line);
-        if (strings[count] == NULL) { 
-            printf("Strdup failed\n");
-            fclose(file);
-            return 1;
-        }
+        strings[count] = strdup(line);  // Duplicate the line into the array
         count++;
     }
 
@@ -100,6 +97,10 @@ int main(int argc, char *argv[]) {
 
     // Print histogram
     histogram(x, y, max_len, 30);
+
+    // Print the date and time of execution
+    time_t t = time(NULL);
+    printf("\nProgram run at: %s", ctime(&t));
 
     // Free allocated memory
     free(H);
