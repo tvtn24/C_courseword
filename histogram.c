@@ -35,23 +35,23 @@ int find_max(double *y, int n) {
     return max;
 }
 
-int *histogram_lengths(char **strings, int n){
+int *histogram_lengths(char **strings, int n) {
     // find longest words
     int max_len = max_length(strings, n); 
 
     // initiate H array with max_len size
     int *H = (int *)malloc((max_len + 1) * sizeof(int));
-    for(int i = 0; i < max_len + 1; i++){
+    for(int i = 0; i < max_len + 1; i++) {
        H[i] = 0;
     }
 
-    if (H == NULL){
+    if (H == NULL) {
         printf("Malloc failed\n");
         exit(1);
-    }
+    } 
 
     // count words length and increase the corresponding index in H
-    for(int i = 0; i < n; i++){
+    for(int i = 0; i < n; i++) {
         int len = strlen(strings[i]);
         H[len]++;
     }
@@ -64,10 +64,10 @@ int *histogram_lengths(char **strings, int n){
 }
 
 // find the words with longest length in array
-int max_length(char **strings, int n){
+int max_length(char **strings, int n) {
     int max_length = 0;
 
-    for(int i = 0; i < n; i++){
+    for(int i = 0; i < n; i++) {
         int len = strlen(strings[i]);
         // compare and replace max value if current word is longer
         if(len > max_length) 
