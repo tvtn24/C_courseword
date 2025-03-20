@@ -67,7 +67,7 @@ int main(int argc, char *argv[]) {
             fclose(file);
             return 1;
         }
-        
+
         count++;
     }
 
@@ -79,13 +79,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    // Find max length to determine how many bins to show
-    int max_len = 0;
-    for (int i = 1; i <= count; i++) {
-        if (H[i] > 0) {
-            max_len = i;
-        }
-    }
+    int max_len = max_length(strings, count);
 
     // Prepare data for histogram
     int *x = (int *)malloc(max_len * sizeof(int));
