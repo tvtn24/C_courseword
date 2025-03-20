@@ -22,7 +22,7 @@ int *many_plays(int N) {
         exit(0);
     }
     
-    // Set the first seed to -1 and 0 for the remaining game
+    // Main loop for playing multiple game (Set the first seed to -1 and 0 for the remaining game)
     int seed = -1;
     for (int i = 0; i < N; i++) {
         int deck[52];
@@ -43,6 +43,7 @@ int main() {
     int N = 10000; 
     printf("Playing %d games of patience...\n", N);
     
+    // Initialse an array to hold results of played games
     int *results = many_plays(N);
     
     // Calculate percentage of winning games

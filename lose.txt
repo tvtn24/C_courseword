@@ -1,0 +1,12 @@
+10 1 
+10 9 
+10 9 4 
+10 9 4 1 
+3 9 4 4 
+3 9 4 4 12 
+3 9 4 4 12 4 
+3 9 4 4 12 4 3 
+3 9 4 4 12 4 3 5 
+3 9 4 4 12 4 3 5 9 
+Game ended with 39 cards left in the deck.
+Player loses.

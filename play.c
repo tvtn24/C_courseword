@@ -1,3 +1,4 @@
+// helper file for patience and pstatistics
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -7,13 +8,16 @@
 
 Pair add_to_11(int *visible, int num_vis) {
 
+
     Pair pair;
-    pair.i = -1;  // Initialize to -1 to indicate "no pair found"
+    pair.i = -1;  // Initialise to -1 to indicate "no pair found"
     pair.j = -1;
 
+    // Loop through the piles for pair that add to 11
     for (int i = 0; i < num_vis - 1; i++) {
         for (int j = i + 1; j < num_vis; j++) {
             if (visible[i] + visible[j] == 11) {
+                // Set the value of pair to corresponding index of cards that add to 11
                 pair.i = i;
                 pair.j = j;
                 return pair; // Return when a pair is found
@@ -27,12 +31,14 @@ Pair add_to_11(int *visible, int num_vis) {
 Royal jqk(int *visible, int num_vis) {
 
     Royal royal;
-    royal.j = -1;
+    royal.j = -1; // Initialise to -1 to indicate "no royal found"
     royal.q = -1;
     royal.k = -1;
 
+    // Loop through the piles to find royals
     for (int i = 0; i < num_vis; i++)
-    {
+    {   
+        // If found assign the value corresponding piles to royal
         if (visible[i] == 11)
             royal.j = i;
         else if (visible[i] == 12)
@@ -56,7 +62,7 @@ int play(int *deck, int verbose){
     // Start with first two cards from deck
     visible[num_visible++] = deck[next_card++];
     visible[num_visible++] = deck[next_card++];
-    deck_size -= 2;
+    deck_size -= 2; 
 
     if (verbose) {
         // Print initial state
