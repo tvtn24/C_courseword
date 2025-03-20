@@ -39,16 +39,11 @@ void query_anagrams(key_node *list) {
     }
 }
 
-int main(int argc, char *argv[]) {
-    if (argc != 2) {
-        printf("Usage: %s <file_name>\n", argv[0]);
-        return 1;
-    }
-
+int main() {
     // Open file of user input
-    FILE *file = fopen(argv[1], "r");
+    FILE *file = fopen("smaller_words.txt", "r");
     if (file == NULL) {
-        printf("Could not open file %s\n", argv[1]);
+        printf("Could not open file %s\n", "smaller_words.txt");
         return 1;
     }
     
